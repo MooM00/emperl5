@@ -133,7 +133,7 @@ sub get_files {
     } elsif ($^O eq 'emscripten') {
 	my $f = "$ENV{EMSCRIPTEN}/system/lib/libc/musl/arch/emscripten/bits/errno.h";
 	die "didn't find $f" unless -f $f;
-	$file{$f} = 1;
+	push(@file, $f);
     } elsif ($Config{archname} eq 'arm-riscos') {
 	# Watch out for cross compiling for RISC OS
 	my $dep = `echo "#include <errno.h>" | gcc -E -M -`;
